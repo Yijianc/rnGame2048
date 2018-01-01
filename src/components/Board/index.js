@@ -1,32 +1,34 @@
 import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Row from '../Row/index.js';
 
-import styles from './style.js';
+import {boardStyles} from '../../styles/index.js';
 
 // Game board
 const Board = ({matrix}) => {
   _renderItem = ({item, index}) => <Row key={index} row={item}/>;
   _keyExtractor = (item, index) => index;
   return (
-    <FlatList
-      contentContainerStyle={styles.flexContainer}
-      data={matrix}
-      renderItem={this._renderItem}
-      keyExtractor={this._keyExtractor}
-    />
+    <View style={boardStyles.container}>
+      <View style={boardStyles.board}>
+        {
+          matrix.map((row, idx) => <Row key={idx} row={row} />)
+        }
+      </View>
+    </View>
+  );
+  return (
+    <View style={boardStyles.container}>
+      <FlatList
+        data={matrix}
+        renderItem={this._renderItem}
+        keyExtractor={this._keyExtractor}
+        contentContainerStyle={boardStyles.board}
+      />
+    </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   board: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'yellow'
-//   }
-// });
 
 Board.propTypes = {
   matrix: PropTypes.arrayOf(PropTypes.array).isRequired,

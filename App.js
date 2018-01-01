@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-// import Board from './src/components/Board/index.js';
+import { StyleSheet, View } from 'react-native';
 import AppLayout from './src/layouts/App.js';
 
 export default class App extends React.Component {
