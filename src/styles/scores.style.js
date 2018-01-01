@@ -1,21 +1,28 @@
 import createStyles, {
   colors, fonts, dimensions,
   gutterWidth, headerH, innerWidth,
-  flexCenter,
+  flexCenter, padding,
 } from './base.style.js';
 
 const scoreStyles = createStyles({
   bandScore: {
     ...flexCenter,
+    justifyContent: 'space-around',
     width: (innerWidth * 0.6 - gutterWidth) / 2,
-    height: headerH,
+    height: headerH * 0.7 - gutterWidth,
+    paddingVertical: padding.sm,
     borderRadius: dimensions.fullScale,
     backgroundColor: colors.scoreBoard,
   },
-  score: {},
+  score: {
+    color: colors.white,
+    fontSize: fonts.lg,
+    fontWeight: 'bold',
+  },
   text: {
     color: colors.scoreColor,
     fontSize: fonts.md,
+    fontWeight: 'bold',
   },
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import AppLayout from './src/layouts/App.js';
+import Main from './src/layouts/Main.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <AppLayout matrix={this.matrix} score={0} bestScore={26909}/>
+        <Main matrix={this.matrix} score={0} bestScore={26909}/>
       </View>
     );
   }

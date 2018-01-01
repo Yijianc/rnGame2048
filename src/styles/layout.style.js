@@ -20,12 +20,16 @@ const layoutStyles = createStyles({
   },
   scorePanel: {
     ...flexRow,
-    height: headerH,
+    width: innerWidth * 0.6,
+    height: headerH * 0.7 - gutterWidth,
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
   controller: {
-    height: 50,
-    backgroundColor: colors.secondary
+    width: innerWidth * 0.6,
+    height: headerH * 0.3,
+    borderRadius: dimensions.fullScale,
+    backgroundColor: colors.btn,
   },
 });
 

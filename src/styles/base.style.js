@@ -32,7 +32,7 @@ export const colors  = {
   cell128: '#f3d86b',
   cell256: '#f1d04b',
   cell512: '#e4bf2a',
-  cell1024: '#ecc300', // 临时
+  cell1024: '#e2ba12', // 临时
   cell2048: '#ecc300',
   cell4096: '#ecc300', // 临时
   cell8192: '#ecc300', // 临时
@@ -111,7 +111,7 @@ export const flexRow = {
   flexDirection: 'row',
 };
 
-export const floxCol = {
+export const flexCol = {
   ...flexFulfill,
   flexDirection: 'column'
 };

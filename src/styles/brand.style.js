@@ -15,7 +15,7 @@ const brandStyles = createStyles({
   },
   text: {
     color: colors.white,
-    fontSize: fonts.md,
+    fontSize: fonts.lg * 1.2,
     fontWeight: 'bold',
   },
 });

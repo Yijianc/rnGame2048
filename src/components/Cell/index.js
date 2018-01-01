@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {cellStyles} from '../../styles/index.js';
-console.log(cellStyles, 'cellStyles');
 
 const Cell = ({value}) => {
   const _cell = value ? `cell${value}` : 'cell';
