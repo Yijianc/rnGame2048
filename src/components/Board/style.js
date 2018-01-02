@@ -1,4 +1,6 @@
-import createStyles, { flexFulfill, colors, dimensions } from './base.style.js';
+import createStyles, {
+  flexFulfill, colors, dimensions
+} from '../style.base.js';
 
 const boardStyles = createStyles({
   board: {

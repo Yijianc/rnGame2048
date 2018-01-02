@@ -1,8 +1,10 @@
-import createStyles, {
+import { createStyles, BaseStyles } from '../components';
+
+const {
   flexCenter, flexRow, colors,
   padding, dimensions, innerWidth,
   gutterWidth, headerH
-} from './base.style.js';
+} = BaseStyles;
 
 const layoutStyles = createStyles({
   app: {

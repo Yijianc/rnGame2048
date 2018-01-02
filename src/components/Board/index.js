@@ -1,15 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import Row from '../Row/index.js';
+import Row from '../Row';
 
-import {boardStyles} from '../../styles/index.js';
+import styles from './style';
 
 // Game board
 const Board = ({matrix}) => {
   return (
-    <View style={boardStyles.container}>
-      <View style={boardStyles.board}>
+    <View style={styles.container}>
+      <View style={styles.board}>
         {
           matrix.map((row, idx) => <Row key={idx} row={row} />)
         }

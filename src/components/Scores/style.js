@@ -2,7 +2,7 @@ import createStyles, {
   colors, fonts, dimensions,
   gutterWidth, headerH, innerWidth,
   flexCenter, padding,
-} from './base.style.js';
+} from '../style.base.js';
 
 const scoreStyles = createStyles({
   bandScore: {

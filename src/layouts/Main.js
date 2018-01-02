@@ -2,24 +2,22 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Board from '../components/Board/index.js';
-import Scores from '../components/Scores/index.js';
-import Brand from '../components/Brand/index.js';
+import { Brand, Board, Scores } from '../components';
 
-import {layoutStyles} from '../styles/index.js';
+import styles from './style.main';
 
 // Application entry
 const Main = ({matrix, bestScore, score}) => {
   return (
-    <View style={layoutStyles.app}>
-      <View style={layoutStyles.header}>
+    <View style={styles.app}>
+      <View style={styles.header}>
         <Brand />
         <View>
-          <View style={layoutStyles.scorePanel}>
+          <View style={styles.scorePanel}>
             <Scores text={'SCORE'} score={score} />
             <Scores text={'BEST'} score={bestScore} />
           </View>
-          <View style={layoutStyles.controller}></View>
+          <View style={styles.controller}></View>
         </View>
       </View>
       <Board matrix={matrix} />

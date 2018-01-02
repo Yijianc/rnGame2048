@@ -1,4 +1,4 @@
-import createStyles, { flexCenter, cellScale, colors, fonts } from './base.style.js';
+import createStyles from '../style.base.js';
 
 const rowStyles = createStyles({
   row: {

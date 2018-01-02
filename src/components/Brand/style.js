@@ -2,7 +2,7 @@ import createStyles, {
   flexCenter, fonts, colors,
   dimensions, padding, innerWidth,
   gutterWidth, headerH
-} from './base.style.js';
+} from '../style.base.js';
 
 const brandStyles = createStyles({
   title: {
