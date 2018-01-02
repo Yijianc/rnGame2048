@@ -5,7 +5,7 @@ import Board from './Board';
 import Brand from './Brand';
 import Cell from './Cell';
 import Row from './Row';
-import Scores from './Scores';
+import Score from './Score';
 
 export {
   createStyles,
@@ -15,5 +15,5 @@ export {
   Brand,
   Cell,
   Row,
-  Scores,
+  Score,
 };

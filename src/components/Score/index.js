@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './style';
 
-const Scores = ({text, score}) => {
+const Score = ({text, score}) => {
   return (
     <View style={styles.bandScore}>
       <Text style={styles.text}>{text}</Text>
@@ -13,14 +13,14 @@ const Scores = ({text, score}) => {
   );
 };
 
-Scores.defaultProps = {
+Score.defaultProps = {
   text: 'SCORE',
   score: 0,
 };
 
-Scores.propTypes = {
+Score.propTypes = {
   text: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
 };
 
-export default Scores;
+export default Score;

@@ -1,0 +1,4 @@
+export const MOVE_UP = "GAMEBOARD/MOVE_UP";
+export const MOVE_DOWN = "GAMEBOARD/MOVE_DOWN";
+export const MOVE_LEFT = "GAMEBOARD/MOVE_LEFT";
+export const MOVE_RIGHT = "GAMEBOARD/MOVE_DOWN";

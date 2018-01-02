@@ -1,17 +1,12 @@
-import { createStyles, BaseStyles } from '../components';
+import { createStyles, BaseStyles } from '../../components';
 
 const {
   flexCenter, flexRow, colors,
-  padding, dimensions, innerWidth,
-  gutterWidth, headerH
+  dimensions, innerWidth, gutterWidth,
+  headerH,
 } = BaseStyles;
 
-const layoutStyles = createStyles({
-  app: {
-    flex: 1,
-    paddingHorizontal: gutterWidth,
-    backgroundColor: colors.background,
-  },
+const dashboardStyles = createStyles({
   header: {
     ...flexCenter,
     flexDirection: 'row',
@@ -35,4 +30,4 @@ const layoutStyles = createStyles({
   },
 });
 
-export default layoutStyles;
+export default dashboardStyles;
