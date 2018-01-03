@@ -8,14 +8,21 @@ import styles from './style';
 // Game board
 const Board = ({matrix}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.board}>
-        {
-          matrix.map((row, idx) => <Row key={idx} row={row} />)
-        }
-      </View>
+    <View style={styles.board}>
+      {
+        matrix.map((row, idx) => <Row key={idx} row={row} />)
+      }
     </View>
   );
+  // return (
+  //   <View style={styles.container}>
+  //     <View style={styles.board}>
+  //       {
+  //         matrix.map((row, idx) => <Row key={idx} row={row} />)
+  //       }
+  //     </View>
+  //   </View>
+  // );
 }
 
 Board.propTypes = {

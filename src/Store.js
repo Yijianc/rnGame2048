@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
-import { reducer as matrixReducer } from './containers/GameBoard';
+import { reducer/* as matrixReducer*/ } from './containers/GameBoard';
 
 const win = window;
 
-const reducer = combineReducers({
-  matrix: matrixReducer,
-});
+// const reducer = combineReducers({
+//   matrix: matrixReducer,
+//   // score: 0,
+//   // bestScore: 0,
+// });
 
 const middlewares = [];
 // if (process.env.NODE_ENV !== 'production') {
@@ -19,8 +21,10 @@ const storeEnhancers = compose(
 );
 
 const initialState = {
-  // matrix: Array(4).fill(Array(4).fill(0)),
-  matrix: [[2, 0, 0, 0], [0, 0, 0, 0], [0, 0, 4, 0], [0, 0, 0, 0]],
+  matrix: Array(4).fill(Array(4).fill(0)),
+  score: 0,
+  bestScore: 2048,
+  gameOver: false,
 };
 
 export default createStore(reducer, initialState, storeEnhancers);

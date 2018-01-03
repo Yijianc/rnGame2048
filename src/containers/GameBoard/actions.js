@@ -1,13 +1,13 @@
-import {
-  MOVE_UP,
-  MOVE_DOWN,
-  MOVE_LEFT,
-  MOVE_RIGHT,
-} from './actionTypes';
+import * as types from './actionTypes';
 
 const createAction = type => () => ({type});
 
-export const moveUp = createAction(MOVE_UP);
-export const moveDown = createAction(MOVE_DOWN);
-export const moveLeft = createAction(MOVE_LEFT);
-export const moveUpRight = createAction(MOVE_RIGHT);
+export const initMatrix = createAction(types.INIT_MATRIX);
+export const resetMatrix = createAction(types.RESET_MATRIX);
+
+export const placeRandomTile = createAction(types.RANDOM_TILE);
+
+export const swipeUp = createAction(types.MOVE_UP);
+export const swipeDown = createAction(types.MOVE_DOWN);
+export const swipeLeft = createAction(types.MOVE_LEFT);
+export const swipeRight = createAction(types.MOVE_RIGHT);

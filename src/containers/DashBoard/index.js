@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Brand, Score } from '../../components';
 
@@ -21,14 +22,16 @@ const DashBoard = ({score, bestScore}) => {
   );
 };
 
-DashBoard.defaultProps = {
-  score: 0,
-  bestScore: 0,
-};
-
 DashBoard.propTypes = {
   score: PropTypes.number.isRequired,
   bestScore: PropTypes.number.isRequired,
 };
 
-export default DashBoard;
+const mapStateToProps = state => {
+  return {
+    score: state.score,
+    bestScore: state.bestScore,
+  };
+};
+
+export default connect(mapStateToProps)(DashBoard);
