@@ -23,8 +23,9 @@ const storeEnhancers = compose(
 const initialState = {
   matrix: Array(4).fill(Array(4).fill(0)),
   score: 0,
-  bestScore: 2048,
+  bestScore: 0,
   gameOver: false,
+  moved: true,
 };
 
 export default createStore(reducer, initialState, storeEnhancers);

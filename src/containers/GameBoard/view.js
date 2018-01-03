@@ -14,6 +14,7 @@ import swipeDetect from '../../utils/swipeDetect';
 class GameBoard extends React.PureComponent {
   constructor(props) {
     super(props);
+    console.log('GameBoard# ', this);
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
@@ -63,8 +64,10 @@ class GameBoard extends React.PureComponent {
   }
   render() {
     return (
-      <View style={styles.container} {...this._panResponder.panHandlers}>
-        <Board matrix={this.props.matrix} />
+      <View style={styles.container}>
+        <View style={styles.board} {...this._panResponder.panHandlers}>
+          <Board matrix={this.props.matrix} />
+        </View>
       </View>
     );
   }
