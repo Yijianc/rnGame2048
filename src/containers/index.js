@@ -1,8 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import DashBoard from './DashBoard';
+import { view as DashBoard} from './DashBoard';
 import { view as GameBoard } from './GameBoard';
+import { view as MenuModal } from './MenuModal';
 
 import styles from './style';
 
@@ -11,6 +12,7 @@ const Main = () => {
     <View style={styles.container}>
       <DashBoard />
       <GameBoard />
+      <MenuModal />
     </View>
   );
 };

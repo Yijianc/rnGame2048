@@ -14,7 +14,7 @@ import swipeDetect from '../../utils/swipeDetect';
 class GameBoard extends React.PureComponent {
   constructor(props) {
     super(props);
-    console.log('GameBoard# ', this);
+
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
@@ -75,7 +75,7 @@ class GameBoard extends React.PureComponent {
 
 GameBoard.propTypes = {
   matrix: PropTypes.arrayOf(PropTypes.array).isRequired,
-  // onInitMatrix: PropTypes.func.isRequired,
+  onInitMatrix: PropTypes.func.isRequired,
   // onResetMatrix: PropTypes.func.isRequired,
   onRandomTile: PropTypes.func.isRequired,
   onSwipeUp: PropTypes.func.isRequired,
@@ -86,14 +86,14 @@ GameBoard.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    matrix: state.matrix,
+    matrix: state.boardState.matrix,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onInitMatrix: bindActionCreators(matrixActions.initMatrix, dispatch),
-    onResetMatrix: bindActionCreators(matrixActions.resetMatrix, dispatch),
+    // onResetMatrix: bindActionCreators(matrixActions.resetMatrix, dispatch),
     onRandomTile: bindActionCreators(matrixActions.placeRandomTile, dispatch),
     onSwipeUp: bindActionCreators(matrixActions.swipeUp, dispatch),
     onSwipeDown: bindActionCreators(matrixActions.swipeDown, dispatch),

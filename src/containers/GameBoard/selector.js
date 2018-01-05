@@ -1,9 +1,14 @@
 // import { createSelector } from 'reselect';
 // import * as types from './actionTypes';
 //
-// const getMatrix = (state) => state.matrix;
+// const getScore = state => state.score;
+// const getBestScore = state => state.bestScore;
 //
 // export const reorganizeMatrix = createSelector(
-//   [getMatrix],
-//   matrix => matrix
+//   [getScore, getBestScore],
+//   (score, bestScore) => {
+//     if (score > bestScore) {
+//
+//     }
+//   }
 // );

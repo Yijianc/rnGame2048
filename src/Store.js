@@ -1,14 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { AsyncStorage } from 'react-native';
 
-import { reducer/* as matrixReducer*/ } from './containers/GameBoard';
+import { getItem, setItem } from './utils/manageLocalStorage';
+
+import { reducer as matrixReducer } from './containers/GameBoard';
+import { reducer as menuReducer } from './containers/MenuModal';
 
 const win = window;
 
-// const reducer = combineReducers({
-//   matrix: matrixReducer,
-//   // score: 0,
-//   // bestScore: 0,
-// });
+const reducer = combineReducers({
+  boardState: matrixReducer,
+  modalVisible: menuReducer
+});
 
 const middlewares = [];
 // if (process.env.NODE_ENV !== 'production') {
@@ -20,12 +23,12 @@ const storeEnhancers = compose(
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 
-const initialState = {
-  matrix: Array(4).fill(Array(4).fill(0)),
-  score: 0,
-  bestScore: 0,
-  gameOver: false,
-  moved: true,
-};
+const store = createStore(reducer, {}, storeEnhancers);
 
-export default createStore(reducer, initialState, storeEnhancers);
+store.subscribe(() => {
+  const state = store.getState();
+  // console.log(state, 'state');
+  setItem('state', state);
+});
+
+export default store;

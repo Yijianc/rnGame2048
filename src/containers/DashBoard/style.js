@@ -3,7 +3,7 @@ import { createStyles, BaseStyles } from '../../components';
 const {
   flexCenter, flexRow, colors,
   dimensions, innerWidth, gutterWidth,
-  headerH,
+  headerH, fonts,
 } = BaseStyles;
 
 const dashboardStyles = createStyles({
@@ -23,10 +23,16 @@ const dashboardStyles = createStyles({
     alignItems: 'flex-start',
   },
   controller: {
+    ...flexCenter,
     width: innerWidth * 0.6,
     height: headerH * 0.3,
     borderRadius: dimensions.fullScale,
     backgroundColor: colors.btn,
+  },
+  text: {
+    color: colors.white,
+    fontSize: fonts.md,
+    fontWeight: 'bold',
   },
 });
 

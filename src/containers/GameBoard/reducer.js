@@ -240,14 +240,14 @@ class Matrix {
 }
 
 const defaultState = {
-  matrix: [],
+  matrix: Array(4).fill(Array(4).fill(0)),
   score: 0,
   bestScore: 0,
   gameOver: false,
   moved: true,
 };
 
-export default(state = defaultState, action) => {
+export default (state = defaultState, action) => {
   let matrix = new Matrix(state);
   switch (action.type) {
     case types.INIT_MATRIX:
@@ -257,6 +257,7 @@ export default(state = defaultState, action) => {
         ...matrix.addRandomTile()
       };
     case types.RESET_MATRIX:
+      console.log('RESET_MATRIX# ', action);
       const matrixCopy = JSON.parse(JSON.stringify(defaultState));
       matrix = new Matrix(matrixCopy);
       matrix.addRandomTile();

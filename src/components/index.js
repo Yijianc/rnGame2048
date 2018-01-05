@@ -6,6 +6,7 @@ import Brand from './Brand';
 import Cell from './Cell';
 import Row from './Row';
 import Score from './Score';
+import Button from './Button';
 
 export {
   createStyles,
@@ -16,4 +17,5 @@ export {
   Cell,
   Row,
   Score,
+  Button,
 };

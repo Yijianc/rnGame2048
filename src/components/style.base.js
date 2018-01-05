@@ -122,10 +122,15 @@ export const headerH = dimensions.fullHeight * 0.2;
 
 // base styles
 const baseStyles = {
+  // container: {
+  //   paddingHorizontal: padding.sm,
+  //   paddingVertical: padding.lg,
+  //   width: dimensions.fullWidth
+  // },
   container: {
-    paddingHorizontal: padding.sm,
-    paddingVertical: padding.lg,
-    width: dimensions.fullWidth
+    flex: 1,
+    paddingHorizontal: gutterWidth,
+    backgroundColor: colors.background,
   },
   header: {
     backgroundColor: 'transparent',
