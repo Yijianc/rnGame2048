@@ -2,14 +2,11 @@ import { AsyncStorage } from 'react-native';
 
 const BEST_SCORE = "bestScore";
 
-export const getItem = (key) => {
+export const getItem = (key, success = (f) => f, error = (f) => f) => {
   AsyncStorage
     .getItem(key)
-    .then((value) => {
-      console.log(value, 'value');
-      return value;
-    })
-    .catch((err) => {})
+    .then((value) => success(value))
+    .catch((err) => error(err));
 }
 
 export const setItem = (key, value) => AsyncStorage.setItem(key, JSON.stringify(value));

@@ -5,11 +5,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { actions as modalActions } from '../MenuModal';
+import { actions as rankActions } from '../RankModal';
 
 import { Brand, Score, Button } from '../../components';
 import styles from './style';
 
-const DashBoard = ({score, bestScore, onModalShow}) => {
+const DashBoard = ({score, bestScore, onModalShow, onRankModalShow}) => {
   return (
     <View style={styles.header}>
       <Brand />
@@ -18,11 +19,18 @@ const DashBoard = ({score, bestScore, onModalShow}) => {
           <Score text={'SCORE'} score={score} />
           <Score text={'BEST'} score={bestScore} />
         </View>
-        <Button
-          onPress={onModalShow}
-          styles={styles}
-          btnText={"MENU"}
-        />
+        <View style={styles.btnPanel}>
+          <Button
+            onPress={onModalShow}
+            styles={styles}
+            btnText={"MENU"}
+          />
+          <Button
+            onPress={onRankModalShow}
+            styles={styles}
+            btnText={"TOP 5"}
+          />
+        </View>
       </View>
     </View>
   );
@@ -42,7 +50,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onModalShow: bindActionCreators(modalActions.showModal, dispatch),
+    onModalShow: bindActionCreators(modalActions.showMenuModal, dispatch),
+    onRankModalShow: bindActionCreators(rankActions.showRankModal, dispatch),
   };
 };
 

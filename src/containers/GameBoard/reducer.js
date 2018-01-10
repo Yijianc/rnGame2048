@@ -207,9 +207,9 @@ class Matrix {
       bestScore: score > bestScore ? score : bestScore,
       moved
     };
-    if (moved) {
-      rsp.prevMatrix = prevMatrix;
-    }
+    // if (moved) {
+    //   rsp.prevMatrix = prevMatrix;
+    // }
     return rsp;
   };
 
@@ -251,6 +251,11 @@ export default (state = defaultState, action) => {
   let matrix = new Matrix(state);
   switch (action.type) {
     case types.INIT_MATRIX:
+      if (action.initialState && action.initialState.hasOwnProperty('boardState')) {
+        return {
+          ...action.initialState.boardState
+        };
+      }
       matrix.addRandomTile();
       return {
         ...state,

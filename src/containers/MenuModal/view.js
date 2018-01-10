@@ -9,12 +9,12 @@ import { actions as matrixActions } from '../GameBoard';
 import { Button } from '../../components';
 import styles from './style';
 
-const MenuModal = ({modalVisible, onModalClose, onMatrixReset}) => {
+const MenuModal = ({menuModalVisible, onModalClose, onMatrixReset}) => {
   return (
     <Modal
-      animationType={"slide"}
+      animationType={"fade"}
       transparent={false}
-      visible={modalVisible}
+      visible={menuModalVisible}
       onRequestClose={() => console.log('######')}>
       <View style={styles.container}>
         <View>
@@ -40,13 +40,13 @@ const MenuModal = ({modalVisible, onModalClose, onMatrixReset}) => {
 
 const mapStateToProps = state => {
   return {
-    modalVisible: state.modalVisible,
+    menuModalVisible: state.menuModalVisible,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onModalClose: bindActionCreators(menuActions.closeModal, dispatch),
+    onModalClose: bindActionCreators(menuActions.closeMenuModal, dispatch),
     onMatrixReset: bindActionCreators(matrixActions.resetMatrix, dispatch)
   };
 };

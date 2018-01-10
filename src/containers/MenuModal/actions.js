@@ -2,5 +2,5 @@ import * as types from './actionTypes';
 
 const createAction = type => () => ({type});
 
-export const showModal = createAction(types.SHOW_MODAL);
-export const closeModal = createAction(types.CLOSE_MODAL);
+export const showMenuModal = createAction(types.SHOW_MENU_MODAL);
+export const closeMenuModal = createAction(types.CLOSE_MENU_MODAL);

@@ -6,6 +6,13 @@ const {
   headerH, fonts,
 } = BaseStyles;
 
+const panel = {
+  ...flexRow,
+  width: innerWidth * 0.6,
+  height: headerH * 0.7 - gutterWidth,
+  justifyContent: 'space-between',
+};
+
 const dashboardStyles = createStyles({
   header: {
     ...flexCenter,
@@ -16,15 +23,16 @@ const dashboardStyles = createStyles({
     overflow: 'hidden',
   },
   scorePanel: {
-    ...flexRow,
-    width: innerWidth * 0.6,
-    height: headerH * 0.7 - gutterWidth,
-    justifyContent: 'space-between',
+    ...panel,
     alignItems: 'flex-start',
+  },
+  btnPanel: {
+    ...panel,
+    alignItems: 'flex-end',
   },
   controller: {
     ...flexCenter,
-    width: innerWidth * 0.6,
+    width: (innerWidth * 0.6 - gutterWidth) / 2,
     height: headerH * 0.3,
     borderRadius: dimensions.fullScale,
     backgroundColor: colors.btn,

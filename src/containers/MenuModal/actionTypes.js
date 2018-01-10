@@ -1,2 +1,2 @@
-export const SHOW_MODAL = "GAME/SHOW_MODAL";
-export const CLOSE_MODAL = "GAME/CLOSE_MODAL";
+export const SHOW_MENU_MODAL = "GAME/SHOW_MENU_MODAL";
+export const CLOSE_MENU_MODAL = "GAME/CLOSE_MENU_MODAL";
