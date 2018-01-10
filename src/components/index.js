@@ -10,6 +10,7 @@ import Button from './Button';
 import Modal from './Modal';
 import TopRank from './Rank';
 import Menu from './Menu';
+import GameOver from './GameOver';
 
 export {
   createStyles,
@@ -24,4 +25,5 @@ export {
   Modal,
   TopRank,
   Menu,
+  GameOver,
 };

@@ -5,7 +5,6 @@ import { AsyncStorage } from 'react-native';
 import { getItem, setItem } from './utils/manageLocalStorage';
 
 import { reducer as matrixReducer } from './containers/GameBoard';
-
 import { reducer as modalReducer } from './containers/HOCModal';
 
 const win = window;

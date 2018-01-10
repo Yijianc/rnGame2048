@@ -44,8 +44,8 @@ class Matrix {
       check(this.swipeRight)
     ];
 
-    // return !movement.includes(false);
-    return !movement.includes(true);
+    return !movement.includes(false);
+    // return !movement.includes(true);
   };
 
   // checkGameOver = () => {

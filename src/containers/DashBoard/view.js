@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,6 @@ import { actions as modalActions } from '../HOCModal';
 import { actions as matrixActions } from '../GameBoard';
 
 import { Brand, Score, Button, Menu, TopRank } from '../../components';
-
 import styles from './style';
 
 const MENU = 'Menu';
@@ -77,7 +76,8 @@ const mapStateToProps = state => {
   return {
     score: state.boardState.score,
     bestScore: state.boardState.bestScore,
-    list: state.boardState.list,
+    list: [332,98983,2323],
+    // list: state.boardState.list,
   };
 };
 
