@@ -7,6 +7,9 @@ import Cell from './Cell';
 import Row from './Row';
 import Score from './Score';
 import Button from './Button';
+import Modal from './Modal';
+import TopRank from './Rank';
+import Menu from './Menu';
 
 export {
   createStyles,
@@ -18,4 +21,7 @@ export {
   Row,
   Score,
   Button,
+  Modal,
+  TopRank,
+  Menu,
 };

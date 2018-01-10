@@ -1,7 +1,7 @@
 import createStyles, {
   flexCenter, cellScale, colors,
   fonts,
-} from '../style.base.js';
+} from '../style.base';
 
 const cell = {
   ...flexCenter,

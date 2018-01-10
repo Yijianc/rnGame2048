@@ -1,4 +1,4 @@
-import createStyles from '../style.base.js';
+import createStyles from '../style.base';
 
 const rowStyles = createStyles({
   row: {

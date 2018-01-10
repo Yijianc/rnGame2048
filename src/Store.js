@@ -5,15 +5,14 @@ import { AsyncStorage } from 'react-native';
 import { getItem, setItem } from './utils/manageLocalStorage';
 
 import { reducer as matrixReducer } from './containers/GameBoard';
-import { reducer as menuReducer } from './containers/MenuModal';
-import { reducer as rankReducer } from './containers/RankModal';
+
+import { reducer as modalReducer } from './containers/HOCModal';
 
 const win = window;
 
 const reducer = combineReducers({
   boardState: matrixReducer,
-  menuModalVisible: menuReducer,
-  rankModalVisible: rankReducer,
+  modalState: modalReducer,
 });
 
 const middlewares = [thunkMiddleware];

@@ -2,14 +2,12 @@ import { createStyles, BaseStyles } from '../../components';
 
 const {
   flexCenter, innerWidth, headerH,
-  dimensions, colors,fonts,
-  flexFulfill,
+  dimensions, colors, fonts,
 } = BaseStyles;
 
 export default createStyles({
-  container: {
-    ...flexFulfill,
-    backgroundColor: colors.background,
+  btnWrapper: {
+    ...flexCenter,
   },
   controller: {
     ...flexCenter,

@@ -1,16 +1,44 @@
 import React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { actions as modalActions } from '../MenuModal';
-import { actions as rankActions } from '../RankModal';
+import { actions as modalActions } from '../HOCModal';
+import { actions as matrixActions } from '../GameBoard';
 
-import { Brand, Score, Button } from '../../components';
+import { Brand, Score, Button, Menu, TopRank } from '../../components';
+
 import styles from './style';
 
-const DashBoard = ({score, bestScore, onModalShow, onRankModalShow}) => {
+const MENU = 'Menu';
+const RANK = 'Top 5';
+
+const DashBoard = ({score, bestScore, list, onModalShow, onModalClose, onMatrixReset}) => {
+  showMenuModal = () => {
+    let modalSetting = {
+      modalChild: (
+        <Menu
+          onModalClose={onModalClose}
+          onMatrixReset={onMatrixReset}
+        />
+      ),
+      modalHeader: MENU,
+    };
+    onModalShow(modalSetting);
+  }
+  showRankModal = () => {
+    let modalSetting = {
+      modalChild: (
+        <TopRank
+          list={list}
+          onModalClose={onModalClose}
+        />
+      ),
+      modalHeader: RANK,
+    };
+    onModalShow(modalSetting);
+  }
   return (
     <View style={styles.header}>
       <Brand />
@@ -21,14 +49,14 @@ const DashBoard = ({score, bestScore, onModalShow, onRankModalShow}) => {
         </View>
         <View style={styles.btnPanel}>
           <Button
-            onPress={onModalShow}
+            onPress={this.showMenuModal}
             styles={styles}
-            btnText={"MENU"}
+            btnText={MENU.toUpperCase()}
           />
           <Button
-            onPress={onRankModalShow}
+            onPress={this.showRankModal}
             styles={styles}
-            btnText={"TOP 5"}
+            btnText={RANK.toUpperCase()}
           />
         </View>
       </View>
@@ -39,19 +67,25 @@ const DashBoard = ({score, bestScore, onModalShow, onRankModalShow}) => {
 DashBoard.propTypes = {
   score: PropTypes.number.isRequired,
   bestScore: PropTypes.number.isRequired,
+  list: PropTypes.array.isRequired,
+  onModalShow: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  onMatrixReset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     score: state.boardState.score,
     bestScore: state.boardState.bestScore,
+    list: state.boardState.list,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onModalShow: bindActionCreators(modalActions.showMenuModal, dispatch),
-    onRankModalShow: bindActionCreators(rankActions.showRankModal, dispatch),
+    onModalShow: bindActionCreators(modalActions.showModal, dispatch),
+    onModalClose: bindActionCreators(modalActions.closeModal, dispatch),
+    onMatrixReset: bindActionCreators(matrixActions.resetMatrix, dispatch),
   };
 };
 

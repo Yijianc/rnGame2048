@@ -2,12 +2,13 @@ import * as types from './actionTypes';
 
 class Matrix {
   constructor(props) {
-    const {matrix, score, bestScore, gameOver, moved} = props || {};
+    const {matrix, score, bestScore, gameOver, moved, list} = props || {};
     this.matrix = JSON.parse(JSON.stringify(matrix));
     this.score = score;
     this.bestScore = bestScore;
     this.gameOver = gameOver;
     this.moved = moved;
+    this.list = list || [];
   }
 
   getAvlCoords = matrix => {
@@ -27,7 +28,7 @@ class Matrix {
 
   hasMatrixChanged = (preMatrix, currMatrix) => JSON.stringify(preMatrix) !== JSON.stringify(currMatrix);
 
-  checkGameOver = matrix => {
+  detectGameState = matrix => {
     const matrixCopy = JSON.parse(JSON.stringify(matrix));
 
     const check = fn => {
@@ -43,8 +44,21 @@ class Matrix {
       check(this.swipeRight)
     ];
 
+    // return !movement.includes(false);
     return !movement.includes(true);
   };
+
+  // checkGameOver = () => {
+  //   this.gameOver = true;
+  //   if (this.list.length <= 5) {
+  //     this.list.push(this.score);
+  //   }
+  //   let scoreIndex = this.list.findIndex(item => this.score > item);
+  //   if (scoreIndex !== -1) {
+  //     this.list.splice(scoreIndex, 0, this.score);
+  //   }
+  //   return {gameOver: true, list: this.list};
+  // };
 
   addRandomTile = () => {
     const {matrix} = this;
@@ -53,27 +67,50 @@ class Matrix {
     if (this.gameOver) return {matrix};
 
     if (!this.moved) {
-      if (this.checkGameOver(newMatrix)) {
+      if (this.detectGameState(newMatrix)) {
         this.gameOver = true;
-        return {gameOver: true};
+        if (this.list.length <= 5) {
+          this.list.push(this.score);
+        }
+        let scoreIndex = this.list.findIndex(item => this.score > item);
+        if (scoreIndex !== -1) {
+          this.list.splice(scoreIndex, 0, this.score);
+        }
+        return {gameOver: true, list: this.list};
       }
+      // this.checkGameOver(newMatrix);
       return {matrix};
     }
 
     const avlCoords = this.getAvlCoords(matrix);
     if (avlCoords.length === 0) {
-      if (this.checkGameOver(newMatrix)) {
+      if (this.detectGameState(newMatrix)) {
         this.gameOver = true;
-        return {gameOver: true};
+        if (this.list.length <= 5) {
+          this.list.push(this.score);
+        }
+        let scoreIndex = this.list.findIndex(item => this.score > item);
+        if (scoreIndex !== -1) {
+          this.list.splice(scoreIndex, 0, this.score);
+        }
+        return {gameOver: true, list: this.list};
       }
       return {matrix: newMatrix};
     }
 
     const coord = this.generateRandomTile(avlCoords);
     newMatrix[coord[0]][coord[1]] = this.generateRandomTile([2, 4]);
-    if (this.checkGameOver(newMatrix)) {
+    if (this.detectGameState(newMatrix)) {
       this.gameOver = true;
-      return {gameOver: true, matrix: newMatrix};
+      if (this.list.length <= 5) {
+        this.list.push(this.score);
+      }
+      let scoreIndex = this.list.findIndex(item => this.score > item);
+      if (scoreIndex !== -1) {
+        this.list.splice(scoreIndex, 0, this.score);
+      }
+      return {gameOver: true, list: this.list, matrix: newMatrix};
+      // return {gameOver: true, matrix: newMatrix};
     }
     this.matrix = newMatrix;
 
@@ -245,6 +282,7 @@ const defaultState = {
   bestScore: 0,
   gameOver: false,
   moved: true,
+  list: [],
 };
 
 export default (state = defaultState, action) => {
