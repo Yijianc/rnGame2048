@@ -6,7 +6,7 @@ import Button from '../Button';
 
 import styles from './style';
 
-const Menu = ({onModalClose, onMatrixReset}) => {
+const Menu = ({children, onModalClose, onMatrixReset}) => {
   return (
     <View style={styles.btnWrapper}>
       <Button
@@ -22,6 +22,7 @@ const Menu = ({onModalClose, onMatrixReset}) => {
         styles={styles}
         btnText={"NEW GAME"}
       />
+      {children}
     </View>
   );
 };

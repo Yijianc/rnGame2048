@@ -252,9 +252,10 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case MATRIX.INIT:
       console.log(action);
-      if (action.initialState && action.initialState.hasOwnProperty('boardState')) {
+      if (action.initialState) {
+        console.log(action.initialState, '#action.initialState');
         return {
-          ...action.initialState.boardState
+          ...action.initialState
         };
       }
       matrix.addRandomTile();
@@ -263,7 +264,7 @@ export default (state = defaultState, action) => {
         ...matrix.addRandomTile()
       };
     case MATRIX.RESET:
-      console.log('MATRIX_RESET# ', action);
+      console.log(action);
       const matrixCopy = JSON.parse(JSON.stringify(defaultState));
       matrix = new Matrix(matrixCopy);
       matrix.addRandomTile();
@@ -272,26 +273,31 @@ export default (state = defaultState, action) => {
         ...matrix.addRandomTile(),
       };
     case RANDOM_TILE:
+      console.log(action);
       return {
         ...state,
         ...matrix.addRandomTile()
       };
     case SWIPE.LEFT:
+      console.log(action);
       return {
         ...state,
         ...matrix.swipeLeft()
       };
     case SWIPE.UP:
+      console.log(action);
       return {
         ...state,
         ...matrix.swipeUp()
       };
     case SWIPE.RIGHT:
+      console.log(action);
       return {
         ...state,
         ...matrix.swipeRight()
       };
     case SWIPE.DOWN:
+      console.log(action);
       return {
         ...state,
         ...matrix.swipeDown()

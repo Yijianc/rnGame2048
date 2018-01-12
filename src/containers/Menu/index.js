@@ -4,10 +4,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Menu } from '../../components';
+import AlertDialog from '../AlertDialog';
 
 import { modalActions, matrixActions } from '../../actions';
 
-const MenuWrapper = (props) => <Menu {...props} />;
+const MenuWrapper = (props) => {
+  return (
+    <Menu {...props}>
+      <AlertDialog />
+    </Menu>
+  );
+};
 
 MenuWrapper.propTypes = {
   onModalClose: PropTypes.func.isRequired,

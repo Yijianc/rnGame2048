@@ -9,6 +9,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case MODAL.SHOW:
+      console.log(action);
       const {modalChild, modalHeader} = action.modalSetting || {};
       return {
         ...state,
@@ -17,6 +18,7 @@ export default (state = initialState, action) => {
         modalHeader,
       };
     case MODAL.CLOSE:
+      console.log(action);
       return {
         ...state,
         modalVisible: false,

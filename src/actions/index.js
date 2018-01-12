@@ -47,7 +47,11 @@ export const GAME_OVER    = 'GAME_OVER';
 // Actions begin.
 // ================================================================
 
-const action = (type, payload = {}) => ({type, ...payload});
+// const action = (type, payload = {}) => ({type, ...payload});
+const action = (type, payload = {}) => {
+  console.log(type);
+  return {type, ...payload};
+};
 
 export const gameOverAction = () => action(GAME_OVER);
 

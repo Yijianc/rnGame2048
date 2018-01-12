@@ -29,7 +29,7 @@ import { topRankActions } from '../../actions';
 // }
 
 const TopRank = ({topRank}) => {
-  console.log(topRank, '#TopRank');
+  // console.log(topRank, '#TopRank');
   return (
     <Rank list={topRank} />
   );

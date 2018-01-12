@@ -20,18 +20,27 @@ class GameBoard extends React.PureComponent {
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
 
       onPanResponderGrant: (evt, gestureState) => {
-        console.log('# onPanResponderGrant');
+        // console.log('# onPanResponderGrant');
       },
       onPanResponderMove: (evt, gestureState) => {
-        console.log('# onPanResponderMove');
+        // console.log('# onPanResponderMove');
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
-        console.log('# onPanResponderRelease');
+        // console.log('# onPanResponderRelease');
 
         swipeDetect({distX: gestureState.dx, distY: gestureState.dy}, this.detectDirection);
       },
     });
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.board} {...this._panResponder.panHandlers}>
+          <Board matrix={this.props.matrix} />
+        </View>
+      </View>
+    );
   }
   componentDidMount() {
     StatusBar.setHidden(true);  // hide StatusBar
@@ -61,15 +70,6 @@ class GameBoard extends React.PureComponent {
   }
   placeRandomTile() {
     setTimeout(() => this.props.onRandomTile(), 100);
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.board} {...this._panResponder.panHandlers}>
-          <Board matrix={this.props.matrix} />
-        </View>
-      </View>
-    );
   }
 }
 

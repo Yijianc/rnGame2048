@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import { setItem, setBestScore, setTopRank } from './utils/manageStorage';
+import { multiSet, fetchMatrix } from './utils/manageStorage';
 
 import rootReducer from './reducers';
 
@@ -27,9 +27,12 @@ sagaMiddleware.run(rootSaga);
 store.subscribe(() => {
   const state = store.getState();
   console.log(JSON.stringify(state), 'state');
-  setItem('state', state);
-  setBestScore(state.bestScore);
-  // setTopRank(state.topRank);
+  const multiPairs = [
+    ['state', state],
+    ['topRank', state.topRank]
+  ];
+  multiSet(multiPairs);
+  fetchMatrix().then((value) => console.log(value, '#matrixFetchInStore'));
 });
 
 export default store;

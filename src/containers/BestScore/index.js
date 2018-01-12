@@ -8,11 +8,13 @@ import { bestScoreActions } from '../../actions';
 import { Score } from '../../components';
 
 class BestScore extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.bestScore !== nextProps.bestScore;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.bestScore !== this.props.bestScore;
   }
   componentWillReceiveProps(nextProps) {
-    this.props.onBestScoreUpdate(nextProps.score, this.props.bestScore);
+    if (nextProps.score > this.props.bestScore) {
+      this.props.onBestScoreUpdate(nextProps.score, this.props.bestScore);
+    }
   }
   render() {
     return (
