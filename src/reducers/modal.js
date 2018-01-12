@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import { MODAL } from '../actions';
 
 const initialState = {
   modalVisible: false,
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.SHOW_MODAL:
+    case MODAL.SHOW:
       const {modalChild, modalHeader} = action.modalSetting || {};
       return {
         ...state,
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
         modalChild,
         modalHeader,
       };
-    case types.CLOSE_MODAL:
+    case MODAL.CLOSE:
       return {
         ...state,
         modalVisible: false,

@@ -8,7 +8,7 @@ import Row from './Row';
 import Score from './Score';
 import Button from './Button';
 import Modal from './Modal';
-import TopRank from './Rank';
+import Rank from './Rank';
 import Menu from './Menu';
 import GameOver from './GameOver';
 
@@ -23,7 +23,7 @@ export {
   Score,
   Button,
   Modal,
-  TopRank,
+  Rank,
   Menu,
   GameOver,
 };

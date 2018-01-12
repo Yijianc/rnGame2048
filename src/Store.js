@@ -1,20 +1,17 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { AsyncStorage } from 'react-native';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-import { getItem, setItem } from './utils/manageLocalStorage';
+import { setItem, setBestScore, setTopRank } from './utils/manageStorage';
 
-import { reducer as matrixReducer } from './containers/GameBoard';
-import { reducer as modalReducer } from './containers/HOCModal';
+import rootReducer from './reducers';
+
+import rootSaga from './sagas';
 
 const win = window;
 
-const reducer = combineReducers({
-  boardState: matrixReducer,
-  modalState: modalReducer,
-});
+const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [thunkMiddleware];
+const middlewares = [sagaMiddleware];
 // if (process.env.NODE_ENV !== 'production') {
 //   middlewares.push(require('redux-immutable-state-invariant')());
 // }
@@ -24,12 +21,15 @@ const storeEnhancers = compose(
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 
-const store = createStore(reducer, {}, storeEnhancers);
+const store = createStore(rootReducer, {}, storeEnhancers);
+sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
   const state = store.getState();
   console.log(JSON.stringify(state), 'state');
   setItem('state', state);
+  setBestScore(state.bestScore);
+  // setTopRank(state.topRank);
 });
 
 export default store;

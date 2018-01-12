@@ -1,21 +1,23 @@
 import { createStyles, BaseStyles } from '../../components';
 
 const {
-  colors, fonts,
+  colors, fonts, dimensions,
+  flexCenter,
 } = BaseStyles;
 
-const baseStyle = {
+const text = {
   fontSize: fonts.lg,
-  fontWeight: 'bold',
+  color: colors.fontColor,
 };
 
 export default createStyles({
-  text: {
-    ...baseStyle,
-    color: colors.white,
-  },
   header: {
-    ...baseStyle,
-    color: colors.fontColor,
-  }
+    ...flexCenter,
+    marginTop: dimensions.fullHeight * 0.05,
+  },
+  text,
+  score: {
+    ...text,
+    fontWeight: 'bold',
+  },
 });

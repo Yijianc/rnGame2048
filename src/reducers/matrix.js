@@ -1,14 +1,12 @@
-import * as types from './actionTypes';
+import { MATRIX, SWIPE, RANDOM_TILE } from '../actions';
 
 class Matrix {
   constructor(props) {
-    const {matrix, score, bestScore, gameOver, moved, list} = props || {};
+    const {matrix, score, gameOver, moved} = props || {};
     this.matrix = JSON.parse(JSON.stringify(matrix));
     this.score = score;
-    this.bestScore = bestScore;
     this.gameOver = gameOver;
     this.moved = moved;
-    this.list = list || [];
   }
 
   getAvlCoords = matrix => {
@@ -44,21 +42,9 @@ class Matrix {
       check(this.swipeRight)
     ];
 
-    return !movement.includes(false);
-    // return !movement.includes(true);
+    // return !movement.includes(false);
+    return !movement.includes(true);
   };
-
-  // checkGameOver = () => {
-  //   this.gameOver = true;
-  //   if (this.list.length <= 5) {
-  //     this.list.push(this.score);
-  //   }
-  //   let scoreIndex = this.list.findIndex(item => this.score > item);
-  //   if (scoreIndex !== -1) {
-  //     this.list.splice(scoreIndex, 0, this.score);
-  //   }
-  //   return {gameOver: true, list: this.list};
-  // };
 
   addRandomTile = () => {
     const {matrix} = this;
@@ -69,14 +55,7 @@ class Matrix {
     if (!this.moved) {
       if (this.detectGameState(newMatrix)) {
         this.gameOver = true;
-        if (this.list.length <= 5) {
-          this.list.push(this.score);
-        }
-        let scoreIndex = this.list.findIndex(item => this.score > item);
-        if (scoreIndex !== -1) {
-          this.list.splice(scoreIndex, 0, this.score);
-        }
-        return {gameOver: true, list: this.list};
+        return {gameOver: true};
       }
       // this.checkGameOver(newMatrix);
       return {matrix};
@@ -86,14 +65,7 @@ class Matrix {
     if (avlCoords.length === 0) {
       if (this.detectGameState(newMatrix)) {
         this.gameOver = true;
-        if (this.list.length <= 5) {
-          this.list.push(this.score);
-        }
-        let scoreIndex = this.list.findIndex(item => this.score > item);
-        if (scoreIndex !== -1) {
-          this.list.splice(scoreIndex, 0, this.score);
-        }
-        return {gameOver: true, list: this.list};
+        return {gameOver: true};
       }
       return {matrix: newMatrix};
     }
@@ -102,14 +74,7 @@ class Matrix {
     newMatrix[coord[0]][coord[1]] = this.generateRandomTile([2, 4]);
     if (this.detectGameState(newMatrix)) {
       this.gameOver = true;
-      if (this.list.length <= 5) {
-        this.list.push(this.score);
-      }
-      let scoreIndex = this.list.findIndex(item => this.score > item);
-      if (scoreIndex !== -1) {
-        this.list.splice(scoreIndex, 0, this.score);
-      }
-      return {gameOver: true, list: this.list, matrix: newMatrix};
+      return {gameOver: true, matrix: newMatrix};
       // return {gameOver: true, matrix: newMatrix};
     }
     this.matrix = newMatrix;
@@ -236,12 +201,11 @@ class Matrix {
     const prevMatrix = JSON.parse(JSON.stringify(this.matrix));
     callback();
 
-    const {matrix, score, bestScore} = this;
+    const {matrix, score} = this;
     const moved = this.hasMatrixChanged(prevMatrix, matrix);
     const rsp = {
       matrix,
       score,
-      bestScore: score > bestScore ? score : bestScore,
       moved
     };
     // if (moved) {
@@ -279,16 +243,15 @@ class Matrix {
 const defaultState = {
   matrix: Array(4).fill(Array(4).fill(0)),
   score: 0,
-  bestScore: 0,
   gameOver: false,
   moved: true,
-  list: [],
 };
 
 export default (state = defaultState, action) => {
   let matrix = new Matrix(state);
   switch (action.type) {
-    case types.INIT_MATRIX:
+    case MATRIX.INIT:
+      console.log(action);
       if (action.initialState && action.initialState.hasOwnProperty('boardState')) {
         return {
           ...action.initialState.boardState
@@ -299,40 +262,39 @@ export default (state = defaultState, action) => {
         ...state,
         ...matrix.addRandomTile()
       };
-    case types.RESET_MATRIX:
-      console.log('RESET_MATRIX# ', action);
+    case MATRIX.RESET:
+      console.log('MATRIX_RESET# ', action);
       const matrixCopy = JSON.parse(JSON.stringify(defaultState));
       matrix = new Matrix(matrixCopy);
       matrix.addRandomTile();
       return {
         ...defaultState,
         ...matrix.addRandomTile(),
-        bestScore: state.bestScore
       };
-    case types.RANDOM_TILE:
+    case RANDOM_TILE:
       return {
         ...state,
         ...matrix.addRandomTile()
       };
-    case types.MOVE_UP:
-      return {
-        ...state,
-        ...matrix.swipeUp()
-      };
-    case types.MOVE_DOWN:
-      return {
-        ...state,
-        ...matrix.swipeDown()
-      };
-    case types.MOVE_LEFT:
+    case SWIPE.LEFT:
       return {
         ...state,
         ...matrix.swipeLeft()
       };
-    case types.MOVE_RIGHT:
+    case SWIPE.UP:
+      return {
+        ...state,
+        ...matrix.swipeUp()
+      };
+    case SWIPE.RIGHT:
       return {
         ...state,
         ...matrix.swipeRight()
+      };
+    case SWIPE.DOWN:
+      return {
+        ...state,
+        ...matrix.swipeDown()
       };
     default:
       return state;
