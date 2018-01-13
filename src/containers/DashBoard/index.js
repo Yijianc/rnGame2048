@@ -55,16 +55,16 @@ class DashBoard extends React.PureComponent {
       </View>
     );
   }
-  componentDidMount() {
-    this.props.onTopRankFetch();
-  }
+  // componentDidMount() {
+  //   this.props.onTopRankFetch();
+  // }
 }
 
 DashBoard.propTypes = {
   score: PropTypes.number.isRequired,
   onModalShow: PropTypes.func.isRequired,
   onModalClose: PropTypes.func.isRequired,
-  onTopRankFetch: PropTypes.func.isRequired,
+  // onTopRankFetch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onModalShow: bindActionCreators(modalActions.show, dispatch),
     onModalClose: bindActionCreators(modalActions.close, dispatch),
-    onTopRankFetch: bindActionCreators(topRankActions.fetch, dispatch),
+    // onTopRankFetch: bindActionCreators(topRankActions.fetch, dispatch),
   };
 };
 

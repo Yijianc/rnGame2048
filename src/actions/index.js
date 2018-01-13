@@ -39,6 +39,7 @@ export const MODAL        = createTypes('MODAL', DISPLAY);
 export const RANDOM_TILE  = 'RANDOM_TILE';
 export const NEW_GAME     = 'NEW_GAME';
 export const GAME_OVER    = 'GAME_OVER';
+export const SMASH_CACHE  = 'SMASH_CACHE';
 
 // Constants end.
 // ================================================================
@@ -60,6 +61,8 @@ export const newGameAction = () => action(NEW_GAME);
 
 export const gameOverAction = () => action(GAME_OVER);
 
+export const smashCacheAction = () => action(SMASH_CACHE);
+
 export const matrixActions = {
   fetch: () => action(MATRIX[FETCH]),
   init: initialState => action(MATRIX[INIT], {initialState}),
@@ -69,13 +72,7 @@ export const matrixActions = {
 };
 
 export const bestScoreActions = {
-  // fetch: () => action(BEST_SCORE[FETCH]),
-  fetch: () => {
-    getItem('STATE').then((value) => console.log(value, '<= #getItem'));
-    fetchTopRank().then((value) => console.log(value, '<= #fetchTopRank'));
-    fetchMatrix().then((value) => console.log(value, '<= #fetchMatrix'));
-    return action(BEST_SCORE[FETCH]);
-  },
+  fetch: () => action(BEST_SCORE[FETCH]),
   init: bestScore => action(BEST_SCORE[INIT], {bestScore}),
   update: (score, bestScore) => action(BEST_SCORE[UPDATE], {score, bestScore}),
   reset: () => action(BEST_SCORE[RESET]),

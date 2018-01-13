@@ -42,13 +42,10 @@ class GameBoard extends React.PureComponent {
       </View>
     );
   }
-  // componentWillMount() {
-  //   this.props.onMatrixFetch();
-  // }
   componentDidMount() {
     StatusBar.setHidden(true);  // hide StatusBar
     // this.props.onMatrixInit();
-    this.props.onMatrixFetch();
+    // this.props.onMatrixFetch();
   }
   detectDirection = direction => {
     switch (direction) {
@@ -79,7 +76,7 @@ class GameBoard extends React.PureComponent {
 
 GameBoard.propTypes = {
   matrix: PropTypes.arrayOf(PropTypes.array).isRequired,
-  onMatrixFetch: PropTypes.func.isRequired,
+  // onMatrixFetch: PropTypes.func.isRequired,
   onRandomTile: PropTypes.func.isRequired,
   onSwipeUp: PropTypes.func.isRequired,
   onSwipeDown: PropTypes.func.isRequired,
@@ -95,8 +92,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onMatrixInit: bindActionCreators(matrixActions.init, dispatch),
-    onMatrixFetch: bindActionCreators(matrixActions.fetch, dispatch),
+    // onMatrixInit: bindActionCreators(matrixActions.init, dispatch),
+    // onMatrixFetch: bindActionCreators(matrixActions.fetch, dispatch),
     onRandomTile: bindActionCreators(matrixActions.placeRandomTile, dispatch),
     onSwipeUp: bindActionCreators(swipeActions.up, dispatch),
     onSwipeDown: bindActionCreators(swipeActions.down, dispatch),

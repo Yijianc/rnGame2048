@@ -7,16 +7,18 @@ import { getScore, getBestScore, getTopRank } from '../reducers/selectors';
 
 const MAX_RANK_COUNT = 5;
 
-function* dispatchTopRank() {
+export function* dispatchTopRank() {
   const topRankJSON = yield call(fetchTopRank);
   const topRank = yield call(parseArrayJSON, topRankJSON);
+
+  console.log(topRankJSON, '<= #topRankJSON #topRank =>', topRank);
 
   yield put(topRankActions.init(topRank));
 }
 
-export function* watchTopRank() {
-  yield takeEvery(RANK.FETCH, dispatchTopRank);
-}
+// export function* watchTopRank() {
+//   yield takeEvery(RANK.FETCH, dispatchTopRank);
+// }
 
 function* updateTopRankGO() {
   const score = yield select(getScore);
