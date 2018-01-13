@@ -6,7 +6,7 @@ import Button from '../Button';
 
 import styles from './style';
 
-const Menu = ({children, onModalClose, onMatrixReset}) => {
+const Menu = ({children, onModalClose, onMatrixReset, onGameRestart}) => {
   return (
     <View style={styles.btnWrapper}>
       <Button
@@ -16,6 +16,7 @@ const Menu = ({children, onModalClose, onMatrixReset}) => {
       />
       <Button
         onPress={() => {
+          onGameRestart();
           onMatrixReset();
           onModalClose();
         }}
@@ -30,11 +31,13 @@ const Menu = ({children, onModalClose, onMatrixReset}) => {
 Menu.propTypes = {
   onModalClose: PropTypes.func.isRequired,
   onMatrixReset: PropTypes.func.isRequired,
+  onGameRestart: PropTypes.func.isRequired,
 };
 
 Menu.defaultProps = {
   onModalClose: () => {},
   onMatrixReset: () => {},
+  onGameRestart: () => {},
 };
 
 export default Menu;

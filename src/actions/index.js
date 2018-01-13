@@ -35,6 +35,7 @@ export const RANK         = createTypes('TOP_RANK', PROCESSORS);
 export const SWIPE        = createTypes('SWIPE', SWIPE_ACTIONS);
 export const MODAL        = createTypes('MODAL', DISPLAY);
 export const RANDOM_TILE  = 'RANDOM_TILE';
+export const NEW_GAME     = 'NEW_GAME';
 export const GAME_OVER    = 'GAME_OVER';
 
 // Constants end.
@@ -52,6 +53,8 @@ const action = (type, payload = {}) => {
   console.log(type);
   return {type, ...payload};
 };
+
+export const newGameAction = () => action(NEW_GAME);
 
 export const gameOverAction = () => action(GAME_OVER);
 

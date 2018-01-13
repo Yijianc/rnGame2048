@@ -2,40 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, ActivityIndicator } from 'react-native';
 
-const Indicator = ({}) => {
+const Indicator = ({animating, indicOptions, text}) => {
   return (
-    <View style={{
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: 100,
-      width: 100,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#eee'
-    }}>
+    <View>
       <ActivityIndicator
-        animating={true}
-        style={{alignItems: 'center', justifyContent: 'center', padding: 8}}
-        size="small"
+        animating={animating}
+        hidesWhenStopped={!text && !animating}
+        {...indicOptions}
       />
-      <Text>Smashing...</Text>
+      {
+        text ? <Text>{text}</Text> : null
+      }
     </View>
   );
 };
 
 Indicator.propTypes = {
-  // onPress: PropTypes.func.isRequired,
-  // styles: PropTypes.object.isRequired,
-  // btnText: PropTypes.string.isRequired
+  animating: PropTypes.bool.isRequired,
+  indicOptions: PropTypes.shape({
+    size: PropTypes.string,
+    style: PropTypes.object,
+    color: PropTypes.string,
+  }).isRequired,
+  text: PropTypes.string,
 };
 
 Indicator.defaultProps = {
-  // onPress: () => {},
-  // styles: {},
-  // btnText: ''
+  animating: false,
+  indicOptions: {
+    size: 'small',
+    style: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 8,
+    },
+    color: 'gray',
+  },
 };
 
 export default Indicator;

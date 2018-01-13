@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import { multiSet, fetchMatrix } from './utils/manageStorage';
+import { multiSet } from './utils/manageStorage';
 
 import rootReducer from './reducers';
 
@@ -29,10 +29,10 @@ store.subscribe(() => {
   console.log(JSON.stringify(state), 'state');
   const multiPairs = [
     ['state', state],
-    ['topRank', state.topRank]
+    // ['topRank', state.topRank],
+    // ['boardState', state.boardState],
   ];
   multiSet(multiPairs);
-  fetchMatrix().then((value) => console.log(value, '#matrixFetchInStore'));
 });
 
 export default store;

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Menu } from '../../components';
 import AlertDialog from '../AlertDialog';
 
-import { modalActions, matrixActions } from '../../actions';
+import { modalActions, matrixActions, newGameAction } from '../../actions';
 
 const MenuWrapper = (props) => {
   return (
@@ -19,12 +19,14 @@ const MenuWrapper = (props) => {
 MenuWrapper.propTypes = {
   onModalClose: PropTypes.func.isRequired,
   onMatrixReset: PropTypes.func.isRequired,
+  onGameRestart: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onModalClose: bindActionCreators(modalActions.close, dispatch),
     onMatrixReset: bindActionCreators(matrixActions.reset, dispatch),
+    onGameRestart: bindActionCreators(newGameAction, dispatch),
   };
 };
 
