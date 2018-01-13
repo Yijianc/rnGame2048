@@ -1,8 +1,7 @@
 import { AsyncStorage } from 'react-native';
 
-const BEST_SCORE = 'bestScore';
-const TOP_RANK   = 'topRank';
-const MATRIX     = 'boardState';
+const TOP_RANK   = 'TOP_RANK';
+const MATRIX     = 'MATRIX';
 
 export const getItem = (key) => AsyncStorage.getItem(key);
 

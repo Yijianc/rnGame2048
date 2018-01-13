@@ -1,3 +1,5 @@
+import { getItem, fetchTopRank, fetchMatrix } from '../utils/manageStorage';
+
 /**
  * Create constant types.
  * @param  {String} [base='']  prefix of constants
@@ -67,7 +69,13 @@ export const matrixActions = {
 };
 
 export const bestScoreActions = {
-  fetch: () => action(BEST_SCORE[FETCH]),
+  // fetch: () => action(BEST_SCORE[FETCH]),
+  fetch: () => {
+    getItem('STATE').then((value) => console.log(value, '<= #getItem'));
+    fetchTopRank().then((value) => console.log(value, '<= #fetchTopRank'));
+    fetchMatrix().then((value) => console.log(value, '<= #fetchMatrix'));
+    return action(BEST_SCORE[FETCH]);
+  },
   init: bestScore => action(BEST_SCORE[INIT], {bestScore}),
   update: (score, bestScore) => action(BEST_SCORE[UPDATE], {score, bestScore}),
   reset: () => action(BEST_SCORE[RESET]),
