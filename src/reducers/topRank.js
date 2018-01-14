@@ -2,8 +2,7 @@ import { RANK } from '../actions';
 
 const MAX_RANK_COUNT = 5;
 
-// const defaulState = [];
-const defaulState = [1,3,4,5,2];
+const defaulState = [];
 
 export default (state = defaulState, action) => {
   switch (action.type) {
