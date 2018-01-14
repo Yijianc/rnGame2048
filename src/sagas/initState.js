@@ -16,7 +16,7 @@ export default function* fetchStorageState() {
   console.log(appStateJSON, '<= #appStateJSON @fetchStorageState #appState =>', appState);
 
   if (appState) {
-    const {bestScore = 0, boardState, topRank} = appState;
+    const {bestScore = 0, boardState = null, topRank} = appState;
 
     let initBestScofe = bestScore;
     let initTopRank = [];
