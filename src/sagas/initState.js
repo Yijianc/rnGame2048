@@ -9,28 +9,29 @@ export default function* fetchStorageState() {
 
   const isJSON = yield call(detectJSONStr, appStateJSON);
 
-  console.log('#isJSON =>', isJSON);
+  console.log(typeof appStateJSON, '<= #appStateJSON #isJSON =>', isJSON);
 
-  const appState = isJSON ? JSON.parse(appStateJSON) : null;
+  const appState = appStateJSON && isJSON ? JSON.parse(appStateJSON) : {};
 
   console.log(appStateJSON, '<= #appStateJSON @fetchStorageState #appState =>', appState);
 
   if (appState) {
-    const {bestScore, boardState, topRank} = appState;
+    const {bestScore = 0, boardState, topRank} = appState;
 
     let initBestScofe = bestScore;
-
-    if (boardState) {
-      yield put(matrixActions.init(boardState));
-    }
+    let initTopRank = [];
 
     if (yield call(detectArray, topRank)) {
+      initTopRank = topRank;
 
-      initBestScofe = topRank.length !== 0 ? Math.max(...topRank) : initBestScofe;
-
-      yield put(topRankActions.init(topRank));
+      if (topRank.length !== 0) {
+        const maxScore = Math.max(...topRank);
+        initBestScofe = maxScore > initBestScofe ? maxScore : initBestScofe;
+      }
     }
 
     yield put(bestScoreActions.init(initBestScofe));
+    yield put(matrixActions.init(boardState));
+    yield put(topRankActions.init(initTopRank));
   }
 }
