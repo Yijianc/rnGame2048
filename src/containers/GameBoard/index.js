@@ -11,6 +11,8 @@ import styles from './style';
 import { matrixActions, swipeActions } from '../../actions';
 import swipeDetect from '../../utils/swipeDetect';
 
+const TILE_TIME_OUT = 50;
+
 class GameBoard extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -19,17 +21,14 @@ class GameBoard extends React.PureComponent {
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
 
-      onPanResponderGrant: (evt, gestureState) => {
-        // console.log('# onPanResponderGrant');
-      },
-      onPanResponderMove: (evt, gestureState) => {
-        // console.log('# onPanResponderMove');
-      },
+      onPanResponderGrant: (evt, gestureState) => {},
+      onPanResponderMove: (evt, gestureState) => {},
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
-        // console.log('# onPanResponderRelease');
-
-        swipeDetect({distX: gestureState.dx, distY: gestureState.dy}, this.detectDirection);
+        swipeDetect({
+          distX: gestureState.dx,
+          distY: gestureState.dy
+        }, this.detectDirection);
       },
     });
   }
@@ -44,8 +43,6 @@ class GameBoard extends React.PureComponent {
   }
   componentDidMount() {
     StatusBar.setHidden(true);  // hide StatusBar
-    // this.props.onMatrixInit();
-    // this.props.onMatrixFetch();
   }
   detectDirection = direction => {
     switch (direction) {
@@ -70,13 +67,12 @@ class GameBoard extends React.PureComponent {
     }
   }
   placeRandomTile() {
-    setTimeout(() => this.props.onRandomTile(), 100);
+    setTimeout(() => this.props.onRandomTile(), TILE_TIME_OUT);
   }
 }
 
 GameBoard.propTypes = {
   matrix: PropTypes.arrayOf(PropTypes.array).isRequired,
-  // onMatrixFetch: PropTypes.func.isRequired,
   onRandomTile: PropTypes.func.isRequired,
   onSwipeUp: PropTypes.func.isRequired,
   onSwipeDown: PropTypes.func.isRequired,
@@ -92,8 +88,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onMatrixInit: bindActionCreators(matrixActions.init, dispatch),
-    // onMatrixFetch: bindActionCreators(matrixActions.fetch, dispatch),
     onRandomTile: bindActionCreators(matrixActions.placeRandomTile, dispatch),
     onSwipeUp: bindActionCreators(swipeActions.up, dispatch),
     onSwipeDown: bindActionCreators(swipeActions.down, dispatch),

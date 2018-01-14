@@ -122,11 +122,6 @@ export const headerH = dimensions.fullHeight * 0.2;
 
 // base styles
 const baseStyles = {
-  // container: {
-  //   paddingHorizontal: padding.sm,
-  //   paddingVertical: padding.lg,
-  //   width: dimensions.fullWidth
-  // },
   container: {
     flex: 1,
     paddingHorizontal: gutterWidth,

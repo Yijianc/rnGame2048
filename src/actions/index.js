@@ -1,5 +1,3 @@
-import { getItem, fetchTopRank, fetchMatrix } from '../utils/manageStorage';
-
 /**
  * Create constant types.
  * @param  {String} [base='']  prefix of constants

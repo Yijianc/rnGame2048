@@ -1,15 +1,30 @@
 import { AsyncStorage } from 'react-native';
 
-const TOP_RANK   = 'TOP_RANK';
-const MATRIX     = 'MATRIX';
+import { detectJSONStr, detectArray } from './helpers';
+
+const APP_STATE = 'APP_STATE';
 
 export const getItem = (key) => AsyncStorage.getItem(key);
 
-export const setItem = (key, value) => AsyncStorage.setItem(key, JSON.stringify(value));
+export const setItem = (key, value) => {
+  const valJSON = detectJSONStr(value) ? value : JSON.stringify(value);
+  AsyncStorage.setItem(key, valJSON);
+};
 
 export const multiSet = (multiKeyValPairs) => {
   let pairs = [...multiKeyValPairs];
-  pairs = pairs.map((item) => [item[0], JSON.stringify(item[1])]);
+
+  pairs = pairs.map((item) => {
+    if (detectArray(item)) {
+      const [key, value] = item;
+
+      const valJSON = detectJSONStr(value) ? value : JSON.stringify(value);
+
+      return [key, valJSON];
+    }
+    return item;
+  });
+
   AsyncStorage.multiSet(pairs);
 };
 
@@ -22,6 +37,4 @@ export const clearData = () => {
   });
 };
 
-export const fetchTopRank = () => getItem(TOP_RANK);
-
-export const fetchMatrix = () => getItem(MATRIX);
+export const fetchAppState = () => getItem(APP_STATE);

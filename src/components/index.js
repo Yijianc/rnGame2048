@@ -10,7 +10,6 @@ import Button from './Button';
 import Modal from './Modal';
 import Rank from './Rank';
 import Menu from './Menu';
-import GameOver from './GameOver';
 import Indicator from './Indicator';
 
 export {
@@ -26,6 +25,5 @@ export {
   Modal,
   Rank,
   Menu,
-  GameOver,
   Indicator,
 };

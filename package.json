@@ -21,15 +21,11 @@
   },
   "dependencies": {
     "expo": "^23.0.4",
-    "lodash.debounce": "^4.0.8",
-    "promise": "^8.0.1",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.1"
+    "redux-saga": "^0.16.0"
   }
 }

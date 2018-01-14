@@ -17,19 +17,4 @@ const Main = () => {
   );
 };
 
-// export default class Main extends React.PureComponent {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <DashBoard />
-//         <GameBoard />
-//         <HOCModal />
-//       </View>
-//     );
-//   }
-//   componentDidMount() {
-//
-//   }
-// }
-
 export default Main;

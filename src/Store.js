@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import { getItem, multiSet, getAllKeys } from './utils/manageStorage';
+import { setItem } from './utils/manageStorage';
 
 const win = window;
 
@@ -25,14 +25,10 @@ sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
   const state = store.getState();
-  console.log(JSON.stringify(state), 'state');
-  getAllKeys().then((value) => console.log(value, '<= #getAllKeys #store.subscribe'));
-  const multiPairs = [
-    ['STATE', state],
-    ['TOP_RANK', state.topRank],
-    ['MATRIX', state.boardState],
-  ];
-  multiSet(multiPairs);
+
+  console.log(JSON.stringify(state), 'APP_STATE');
+
+  setItem('APP_STATE', state);
 });
 
 export default store;

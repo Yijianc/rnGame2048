@@ -1,9 +1,8 @@
 /**
  * Mobile touch direction detect
- * @param {object} params
- * @param {function} callback
+ * @param  {Object} [params={}]
+ * @param  {Function} [callback=()]
  */
-
 export default function swipeDetect(params = {}, callback = () => {}) {
   const {
     distX,

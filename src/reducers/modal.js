@@ -1,12 +1,12 @@
 import { MODAL } from '../actions';
 
-const initialState = {
+const defaulState = {
   modalVisible: false,
   modalChild: null,
   modalHeader: '',
 };
 
-export default (state = initialState, action) => {
+export default (state = defaulState, action) => {
   switch (action.type) {
     case MODAL.SHOW:
       console.log(action);

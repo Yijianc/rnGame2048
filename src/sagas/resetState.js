@@ -1,6 +1,11 @@
 import { put, takeEvery } from 'redux-saga/effects';
 
-import { matrixActions, topRankActions, bestScoreActions, SMASH_CACHE } from '../actions/';
+import {
+  matrixActions,
+  topRankActions,
+  bestScoreActions,
+  SMASH_CACHE
+} from '../actions/';
 
 function* resetState() {
   yield put(matrixActions.reset());

@@ -6,13 +6,16 @@ import Button from '../Button';
 
 import styles from './style';
 
+const KEEP_GOING = 'KEEP GOING';
+const NEW_GAME   = 'NEW GAME';
+
 const Menu = ({children, onModalClose, onMatrixReset, onGameRestart}) => {
   return (
     <View style={styles.btnWrapper}>
       <Button
         onPress={onModalClose}
         styles={styles}
-        btnText={"KEEP GOING"}
+        btnText={KEEP_GOING}
       />
       <Button
         onPress={() => {
@@ -21,7 +24,7 @@ const Menu = ({children, onModalClose, onMatrixReset, onGameRestart}) => {
           onModalClose();
         }}
         styles={styles}
-        btnText={"NEW GAME"}
+        btnText={NEW_GAME}
       />
       {children}
     </View>

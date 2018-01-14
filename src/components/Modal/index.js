@@ -6,6 +6,7 @@ import Button from '../Button';
 
 import styles from './style';
 
+const CLOSE_MARK = 'X';
 const ModalHelper = ({children, header, animationType, visible, onRequestClose, onModalClose}) => {
   return (
     <Modal
@@ -21,7 +22,7 @@ const ModalHelper = ({children, header, animationType, visible, onRequestClose, 
           <Button
             onPress={() => onModalClose()}
             styles={styles}
-            btnText={"X"}
+            btnText={CLOSE_MARK}
           />
         </View>
         {children}

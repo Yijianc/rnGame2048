@@ -57,7 +57,6 @@ class Matrix {
         this.gameOver = true;
         return {gameOver: true};
       }
-      // this.checkGameOver(newMatrix);
       return {matrix};
     }
 
@@ -75,7 +74,6 @@ class Matrix {
     if (this.detectGameState(newMatrix)) {
       this.gameOver = true;
       return {gameOver: true, matrix: newMatrix};
-      // return {gameOver: true, matrix: newMatrix};
     }
     this.matrix = newMatrix;
 
@@ -89,10 +87,8 @@ class Matrix {
     for (let col = 0; col < len; col++) {
       let newRow = [];
       for (let row = len - 1; row >= 0; row--) {
-        // newRow.push(matrix[row][col]);
         newRow = newRow.concat([matrix[row][col]]);
       }
-      // newMat.push(newRow);
       newMat = newMat.concat([newRow]);
     }
 
@@ -208,9 +204,6 @@ class Matrix {
       score,
       moved
     };
-    // if (moved) {
-    //   rsp.prevMatrix = prevMatrix;
-    // }
     return rsp;
   };
 

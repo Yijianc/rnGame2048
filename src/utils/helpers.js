@@ -1,4 +1,4 @@
-export const detectJSONString = (str) => {
+export const detectJSONStr = (str) => {
   try {
     JSON.parse(str);
   } catch (e) {
@@ -11,7 +11,7 @@ export const detectArray = (src) => Array.isArray(src);
 
 export const parseArrayJSON = (arrJSON) => {
   let arr = [];
-  if (detectJSONString(arrJSON)) {
+  if (detectJSONStr(arrJSON)) {
     const arrParsed = JSON.parse(arrJSON);
     if (detectArray(arrParsed)) {
       arr = arrParsed;

@@ -1,60 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Rank } from '../../components';
 
-import { topRankActions } from '../../actions';
-// class TopRank extends React.Component {
-//   shouldComponentUpdate(nextProps, nextState) {
-//     return nextProps.gameOver;
-//   }
-//   componentWillReceiveProps(nextProps) {
-//     console.log(this.props, '#componentWillReceiveProps', nextProps);
-//     if (nextProps.gameOver) {
-//       this.props.onTopRankUpdate(nextProps.score);
-//     }
-//   }
-//   render() {
-//     console.log('#render');
-//     return (
-//       <Rank list={this.props.topRank} />
-//     );
-//   }
-//   componentDidMount() {
-//     console.log('#componentDidMount');
-//     this.props.onTopRankInit();
-//   }
-// }
+import styles from './style';
 
-const TopRank = ({topRank}) => {
-  // console.log(topRank, '#TopRank');
+const TopRank = ({currScore, topRank}) => {
   return (
-    <Rank list={topRank} />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.text}>Current score:</Text>
+        <Text style={styles.score}>{currScore}</Text>
+      </View>
+      <Rank list={topRank} />
+    </View>
   );
 };
 
 TopRank.propTypes = {
   topRank: PropTypes.array.isRequired,
-  // score: PropTypes.number.isRequired,
-  // gameOver: PropTypes.bool.isRequired,
+  currScore: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     topRank: state.topRank,
-    // score: state.boardState.score,
-    // gameOver: state.boardState.gameOver,
+    currScore: state.boardState.score,
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onTopRankUpdate: bindActionCreators(topRankActions.updateTopRank, dispatch),
-//     onTopRankInit: bindActionCreators(topRankActions.initTopRank, dispatch),
-//   };
-// };
-
 export default connect(mapStateToProps)(TopRank);
-// export default connect(mapStateToProps, mapDispatchToProps)(TopRank);
