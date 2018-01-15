@@ -15,9 +15,9 @@
 
 * [react native](https://facebook.github.io/react-native/docs/getting-started.html): 组件式构建 UI
 * [redux](https://github.com/reactjs/redux): 管理应用状态
-* [redux saga](https://github.com/reactjs/redux): 管理异步调用
+* [redux saga](https://github.com/superRaytin/redux-saga-in-chinese): 管理 Redux 应用异步操作
 * [babel](https://github.com/babel/babel): 转译 es6+ 语法
-* [expo](https://expo.io/): 本地调试 react native 应用
+* [expo](https://expo.io/): React Native 配合 Expo 使用更佳
 
 ## React Native 实践
 
