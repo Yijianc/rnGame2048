@@ -19,16 +19,6 @@
 * [babel](https://github.com/babel/babel): 转译 es6+ 语法
 * [expo](https://expo.io/): 本地调试 react native 应用
 
-## 结构
-
-* src: 项目源码，主要是 react 组件代码。
-  * actions: redux 的相关 action.
-  * components: react native 的无状态组件. 每个组件功能最小化，提高复用性。
-  * containers: 容器组件，操作 redux 数据
-  * reducers:
-  * sagas:
-  * utils:
-
 ## React Native 实践
 
 ### 实践
