@@ -9,11 +9,11 @@ export default function* fetchStorageState() {
 
   const isJSON = yield call(detectJSONStr, appStateJSON);
 
-  console.log(typeof appStateJSON, '<= #appStateJSON #isJSON =>', isJSON);
+  // console.log(typeof appStateJSON, '<= #appStateJSON #isJSON =>', isJSON);
 
   const appState = appStateJSON && isJSON ? JSON.parse(appStateJSON) : {};
 
-  console.log(appStateJSON, '<= #appStateJSON @fetchStorageState #appState =>', appState);
+  // console.log(appStateJSON, '<= #appStateJSON @fetchStorageState #appState =>', appState);
 
   if (appState) {
     const {bestScore = 0, boardState = null, topRank} = appState;

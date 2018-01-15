@@ -19,7 +19,6 @@ const GAMEOVER = 'Game Over!';
 
 class DashBoard extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps, '<= #nextProps @DashBoard #this.props=>', this.props);
     if (nextProps.gameOver) {
       this.props.onGameOver();
       this.showRankModal(GAMEOVER);

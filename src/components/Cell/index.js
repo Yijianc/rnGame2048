@@ -4,9 +4,14 @@ import PropTypes from 'prop-types';
 
 import styles from './style';
 
+const LARGE_NUMBER = 1000;
+
 const Cell = ({value}) => {
   const _cell = value ? `cell${value}` : 'cell';
-  const _number = [2, 4].indexOf(value) > -1 ? 'baseNumber' : 'number';
+
+  let _number = [2, 4].indexOf(value) > -1 ? 'baseNumber' : 'number';
+  _number = value > LARGE_NUMBER ? 'largeNumber' : _number;
+  
   return (
     <View style={styles[_cell]}>
       <Text style={styles[_number]}>{value || null}</Text>

@@ -1,7 +1,7 @@
 import { createStyles, BaseStyles } from '../../components';
 
 const {
-  colors, fonts, dimensions,
+  colors, fonts, buttonGap,
   flexCenter,
 } = BaseStyles;
 
@@ -13,7 +13,7 @@ const text = {
 export default createStyles({
   header: {
     ...flexCenter,
-    marginTop: dimensions.fullHeight * 0.05,
+    marginTop: buttonGap,
   },
   text,
   score: {

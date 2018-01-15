@@ -11,7 +11,7 @@ const NEW_GAME   = 'NEW GAME';
 
 const Menu = ({children, onModalClose, onMatrixReset, onGameRestart}) => {
   return (
-    <View style={styles.btnWrapper}>
+    <View style={styles.menuWrapper}>
       <Button
         onPress={onModalClose}
         styles={styles}

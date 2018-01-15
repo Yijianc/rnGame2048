@@ -3,6 +3,8 @@ import createStyles, {
   fonts,
 } from '../style.base';
 
+const MAX_CELL_VALUE = 8192 + 1;
+
 const cell = {
   ...flexCenter,
   ...cellScale,
@@ -15,11 +17,11 @@ const baseNumber = {
   fontWeight: 'bold'
 };
 
-function customCellStyles() {
+const customCellStyles = () => {
   let customCell = {};
   let _val = 2;
   let seq = 1;
-  while (_val < (8192 + 1)) {
+  while (_val < (MAX_CELL_VALUE)) {
     customCell = {
       ...customCell,
       [`cell${_val}`]: {
@@ -42,6 +44,11 @@ const cellStyles = createStyles({
   number: {
     ...baseNumber,
     color: colors.white,
+  },
+  largeNumber: {
+    ...baseNumber,
+    color: colors.white,
+    fontSize: fonts.md,
   },
 })
 

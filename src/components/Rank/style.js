@@ -1,12 +1,12 @@
 import createStyles, {
   colors, fonts, dimensions,
-  headerH, innerWidth,
+  headerH, innerWidth, buttonGap,
   flexCenter, flexFulfill,
 } from '../style.base';
 
 const height = headerH * 0.3;
 const borderRadius = dimensions.fullScale;
-const marginTop = dimensions.fullHeight * 0.05;
+const marginTop = buttonGap;
 
 const seq = {
   ...flexCenter,
@@ -20,7 +20,6 @@ export default createStyles({
   rankBoard: {
     ...flexFulfill,
     justifyContent: 'flex-start',
-    paddingTop: marginTop,
   },
   list: {
     ...flexCenter,

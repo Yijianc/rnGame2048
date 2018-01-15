@@ -2,8 +2,6 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const { scale, width, height, fontScale } = Dimensions.get('window');
 
-console.log(Platform, 'Platform');
-
 export const dimensions = {
   fullHeight: height,
   fullWidth: width,
@@ -34,10 +32,10 @@ export const colors  = {
   cell128: '#f3d86b',
   cell256: '#f1d04b',
   cell512: '#e4bf2a',
-  cell1024: '#e2ba12', // 临时
+  cell1024: '#e2ba12',
   cell2048: '#ecc300',
-  cell4096: '#ecc300', // 临时
-  cell8192: '#ecc300', // 临时
+  cell4096: '#f3c300',
+  cell8192: '#da7c00', // 临时
 
   black: '#000',
   white: '#fff',
@@ -119,6 +117,8 @@ export const flexCol = {
 };
 
 export const headerH = dimensions.fullHeight * 0.2;
+
+export const buttonGap = dimensions.fullHeight * 0.05;
 
 // base styles
 const baseStyles = {

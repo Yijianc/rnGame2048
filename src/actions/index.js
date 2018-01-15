@@ -51,7 +51,7 @@ export const SMASH_CACHE  = 'SMASH_CACHE';
 
 // const action = (type, payload = {}) => ({type, ...payload});
 const action = (type, payload = {}) => {
-  console.log(type);
+  console.log(type, '<= #type #payload =>' , payload);
   return {type, ...payload};
 };
 

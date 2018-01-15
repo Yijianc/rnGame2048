@@ -1,19 +1,18 @@
 import createStyles, {
   colors, fonts, dimensions,
   headerH, innerWidth, flexFulfill,
-  flexCenter,
+  flexCenter, buttonGap
 } from '../style.base';
 
 const height = headerH * 0.3;
 const borderRadius = dimensions.fullScale;
-const marginTop = dimensions.fullHeight * 0.05;
 
 export default createStyles({
   nav: {
     ...flexCenter,
     flexDirection: 'row',
     height,
-    marginTop,
+    marginTop: buttonGap,
     width: innerWidth,
   },
   header: {

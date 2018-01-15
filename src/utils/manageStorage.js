@@ -31,10 +31,7 @@ export const multiSet = (multiKeyValPairs) => {
 export const getAllKeys = () => AsyncStorage.getAllKeys();
 
 export const clearData = () => {
-  return getAllKeys().then((value) => {
-    console.log(value, '#getAllKeys => #clearData');
-    return AsyncStorage.multiRemove([...value]);
-  });
+  return getAllKeys().then((value) => AsyncStorage.multiRemove([...value]));
 };
 
 export const fetchAppState = () => getItem(APP_STATE);

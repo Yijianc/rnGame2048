@@ -11,8 +11,6 @@ function* updateTopRank() {
 
   let newTopRank = [...topRank];
 
-  console.log(newTopRank, '#updateTopRank', score);
-
   if (newTopRank.length === TOP_RANK_LIMIT && score < Math.min(...newTopRank)) return;
 
   if (newTopRank.findIndex(item => score === item) < 0) {

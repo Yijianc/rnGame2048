@@ -4,6 +4,12 @@ import createStyles, {
   flexCenter, padding,
 } from '../style.base';
 
+const score = {
+  color: colors.white,
+  fontSize: fonts.lg,
+  fontWeight: 'bold',
+};
+
 const scoreStyles = createStyles({
   bandScore: {
     ...flexCenter,
@@ -14,10 +20,10 @@ const scoreStyles = createStyles({
     borderRadius: dimensions.fullScale,
     backgroundColor: colors.scoreBoard,
   },
-  score: {
-    color: colors.white,
-    fontSize: fonts.lg,
-    fontWeight: 'bold',
+  score,
+  largeScore: {
+    ...score,
+    fontSize: fonts.md,
   },
   text: {
     color: colors.scoreColor,

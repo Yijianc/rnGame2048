@@ -9,7 +9,7 @@ import { Button, Indicator } from '../../components';
 import styles from './style';
 
 import { smashCacheAction } from '../../actions';
-import { clearData, getAllKeys } from '../../utils/manageStorage';
+import { clearData/*, getAllKeys*/ } from '../../utils/manageStorage';
 
 const DELAY = 500;
 const SMASH_CACHE = 'Smash Cache';
@@ -26,7 +26,7 @@ class AlertDialog extends React.PureComponent {
   render() {
     const {animating, text} = this.state;
     return (
-      <View style={styles.btnWrapper}>
+      <View style={styles.dialogWrapper}>
         <Button
           styles={styles}
           btnText={SMASH_CACHE.toUpperCase()}
@@ -72,9 +72,9 @@ class AlertDialog extends React.PureComponent {
       }, () => {
         setTimeout(() => this.setState({text: ''}), DELAY);
       });
-      getAllKeys().then((keys) => {
-        console.log(keys, '#clearData => #completed => #getAllKeys');
-      });
+      // getAllKeys().then((keys) => {
+      //   console.log(keys, '#clearData => #completed => #getAllKeys');
+      // });
     }, DELAY * 2);
   }
 }

@@ -26,7 +26,7 @@ sagaMiddleware.run(rootSaga);
 store.subscribe(() => {
   const state = store.getState();
 
-  console.log(JSON.stringify(state), 'APP_STATE');
+  // console.log(JSON.stringify(state), 'APP_STATE');
 
   setItem('APP_STATE', state);
 });
